@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,7 +16,9 @@ namespace SRVMAIL6V
 {
     public partial class MainForm : Form
     {
-        string Chaine = @"Initial Catalog=AITSOFTWARE;Data Source=FRANCK\SAGE300;Integrated Security=SSPI";
+       // string Chaine = @"Initial Catalog=AITSOFTWARE;Data Source=FRANCK\SAGE300;Integrated Security=SSPI";
+          private string Chaine = @"Initial Catalog=AITSOFTWARE;Data Source=NATSQL02\SAGE100C;user=SA;password=$AGE100";
+
 
         public List<CTESTOKMAIL> ListeMail;
 
@@ -24,6 +27,24 @@ namespace SRVMAIL6V
         {
             InitializeComponent();
         }
+
+
+        private void EndormirProgramme()
+        {
+            try
+            {
+                TimeSpan interval = new TimeSpan(0, 0, 50);
+                Thread.Sleep(interval);
+               
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+
+
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -37,20 +58,19 @@ namespace SRVMAIL6V
 
             try
             {
-                
-
-
                 #region Paramètres Email Envoi
 
                 var   MyCParams = new CParams();
 
                 // MyCParams.mEmail = " renouvellementSoft@aitek.fr";
-                MyCParams.mEmail = "recrutement@aitek.fr";
+              //  MyCParams.mEmail = "recrutement@aitek.fr";
+                MyCParams.mEmail = "recrutementci@aitek.fr";
 
                 //  MyCParams.mSmtp = "outlook.office365.com";
                 MyCParams.mSmtp = "smtp-legacy.office365.com";
                 //MyCParams.mSmtpPassword = "2017Aitek";
-                MyCParams.mSmtpPassword = "2022Aitek!!";
+              //  MyCParams.mSmtpPassword = "2022Aitek!!";
+                MyCParams.mSmtpPassword = "2022Aitek@";
                 
                 MyCParams.mPort = 587;
 
@@ -72,9 +92,13 @@ namespace SRVMAIL6V
                         {
                             //S'assurer qu'on a pas affaire à un Chauffeur
 
-                            if(elt.mLibelleIdPoste.Trim()!="41")
+                            if(elt.mLibelleIdPoste.Trim()!= "37")
                             {
-                                ListeCHOOSE.Add(elt);
+                                if (elt.mLibelleIdPoste.Trim() != "43")
+                                {
+                                    ListeCHOOSE.Add(elt);
+                                }
+                              
                             }
                             
                         }
@@ -92,6 +116,8 @@ namespace SRVMAIL6V
                             if (obj.mIdCandidat>0)
                             {
                                 if (obj.mIsMailEnvoyeOK == 0 && obj.mMBTI != string.Empty) isSendOK = mDao.sendMailRefus(MyCParams, obj);
+
+                                EndormirProgramme();
                             }
 
 
