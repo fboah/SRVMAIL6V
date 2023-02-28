@@ -16,8 +16,8 @@ namespace SRVMAIL6V
 {
     public partial class MainForm : Form
     {
-        string Chaine = @"Initial Catalog=AITSOFTWARE;Data Source=FRANCK\SAGE300;Integrated Security=SSPI";
-       //   private string Chaine = @"Initial Catalog=AITSOFTWARE;Data Source=NATSQL02\SAGE100C;user=SA;password=$AGE100";
+       // string Chaine = @"Initial Catalog=AITSOFTWARE;Data Source=FRANCK\SAGE300;Integrated Security=SSPI";
+          private string Chaine = @"Initial Catalog=AITSOFTWARE;Data Source=NATSQL02\SAGE100C;user=SA;password=$AGE100";
 
 
         public List<CTESTOKMAIL> ListeMail;
@@ -77,6 +77,7 @@ namespace SRVMAIL6V
 
             try
             {
+               
                 #region Paramètres Email Envoi
 
                 var MyCParams = new CParams();
@@ -168,36 +169,8 @@ namespace SRVMAIL6V
 
 
                         //Fin de l'envoi des mails ,on ecrire le recapitulatif et on ferme l'application
-                        if (msgNOK != string.Empty) CLog.Log("L'email de réponse n'a pas été envoyé aux candidats suivants : " + Environment.NewLine + msgNOK);
-                        if (msgOK != string.Empty) CLog.Log("L'email de réponse a été bien envoyé aux candidats suivants : " + Environment.NewLine + msgOK);
-
-
-                        //Plus la peine
-                        ////Envoi Mail Notifications pour m'alerter
-                        //bool isnotificationOK = false;
-
-                        //if(msgNOK != string.Empty && msgOK != string.Empty)
-                        //{
-                        //    string msgnotif = "L'email de réponse a été bien envoyé aux candidats suivants : " + Environment.NewLine + msgOK + Environment.NewLine + "L'email de réponse n'a pas été envoyé aux candidats suivants : " + Environment.NewLine+msgNOK;
-
-                        //    isnotificationOK = mDao.sendMailNotification(MyCParams, msgnotif);
-                        //}
-
-
-                        //if (msgNOK != string.Empty && msgOK == string.Empty)
-                        //{
-
-                        //    isnotificationOK = mDao.sendMailNotification(MyCParams, "L'email de réponse n'a pas été envoyé aux candidats suivants : " + Environment.NewLine + msgNOK);
-                        //}
-
-
-                        //if (msgNOK == string.Empty && msgOK != string.Empty)
-                        //{
-
-                        //    isnotificationOK = mDao.sendMailNotification(MyCParams, "L'email de réponse a été bien envoyé aux candidats suivants : " + Environment.NewLine + msgOK);
-                        //}
-
-
+                        if (msgNOK != string.Empty) CLog.Log("L'email automatique de refus n'a pas été envoyé aux candidats suivants : " + Environment.NewLine + msgNOK);
+                        if (msgOK != string.Empty) CLog.Log("L'email automatique de refus a été bien envoyé aux candidats suivants : " + Environment.NewLine + msgOK);
 
                     }
 
@@ -260,8 +233,8 @@ namespace SRVMAIL6V
 
 
                     //Fin de l'envoi des mails ,on ecrire le recapitulatif et on ferme l'application
-                    if (msgNOKRecrutementJour != string.Empty) CLog.Log("L'email de recrutement du jour n'a pas été envoyé aux candidats suivants : " + Environment.NewLine + msgNOKRecrutementJour);
-                    if (msgOKRecrutementJour != string.Empty) CLog.Log("L'email de recrutement du jour a été bien envoyé aux candidats suivants : " + Environment.NewLine + msgOKRecrutementJour);
+                    if (msgNOKRecrutementJour != string.Empty) CLog.Log("L'email automatique de recrutement du jour n'a pas été envoyé aux candidats suivants : " + Environment.NewLine + msgNOKRecrutementJour);
+                    if (msgOKRecrutementJour != string.Empty) CLog.Log("L'email automatique de recrutement du jour a été bien envoyé aux candidats suivants : " + Environment.NewLine + msgOKRecrutementJour);
 
 
 
@@ -327,14 +300,50 @@ namespace SRVMAIL6V
 
 
                     //Fin de l'envoi des mails ,on ecrire le recapitulatif et on ferme l'application
-                    if (msgNOKRecrutement != string.Empty) CLog.Log("L'email de recrutement  n'a pas été envoyé aux candidats suivants : " + Environment.NewLine + msgNOKRecrutement);
-                    if (msgOKRecrutement != string.Empty) CLog.Log("L'email de recrutement  a été bien envoyé aux candidats suivants : " + Environment.NewLine + msgOKRecrutement);
+                    if (msgNOKRecrutement != string.Empty) CLog.Log("L'email automatique de recrutement  n'a pas été envoyé aux candidats suivants : " + Environment.NewLine + msgNOKRecrutement);
+                    if (msgOKRecrutement != string.Empty) CLog.Log("L'email automatique de recrutement  a été bien envoyé aux candidats suivants : " + Environment.NewLine + msgOKRecrutement);
                     
                 }
 
 
 
                 #endregion
+
+                
+
+                #region Notification Aurelia BANCHI pour d'éventuelles modifications
+
+                //Envoi Mail Notifications pour m'alerter
+                bool isnotificationOK = false;
+
+                string msgNOKALLRecrutement = string.Empty;
+
+                msgNOKALLRecrutement = msgNOKRecrutementJour + Environment.NewLine + msgNOKRecrutement;
+
+                if (msgNOK != string.Empty && msgNOKALLRecrutement.Trim() != string.Empty)
+                {
+                    string msgnotif = "L'email automatique de refus n'a été envoyé aux candidats suivants : " + Environment.NewLine + msgNOK + Environment.NewLine + "L'email automatique de recrutement n'a pas été envoyé aux candidats suivants : " + Environment.NewLine + msgNOKALLRecrutement;
+                  
+                    isnotificationOK = mDao.sendMailNotification(MyCParams, msgnotif);
+                }
+
+
+                if (msgNOK != string.Empty && msgNOKALLRecrutement.Trim() == string.Empty)
+                {
+
+                    isnotificationOK = mDao.sendMailNotification(MyCParams, "L'email automatique de refus n'a pas été envoyé aux candidats suivants : " + Environment.NewLine + msgNOK);
+                }
+
+
+                if (msgNOK == string.Empty && msgNOKALLRecrutement.Trim() != string.Empty)
+                {
+
+                    isnotificationOK = mDao.sendMailNotification(MyCParams, "L'email automatique de recrutement n'a pas été envoyé aux candidats suivants : " + Environment.NewLine + msgNOKALLRecrutement);
+                }
+
+                #endregion
+
+                
 
                 //Fermer l'appli après envoi
                 Application.Exit();

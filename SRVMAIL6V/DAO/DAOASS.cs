@@ -931,21 +931,22 @@ namespace SRVMAIL6V.DAO
             bool ret = false;
             try
             {
-                if (ParamEmail.mEmail != string.Empty && ParamEmail.mSmtp != string.Empty && ParamEmail.mSmtpPassword != string.Empty && ParamEmail.mPort > 0)
+                if (ParamEmail.mEmail != string.Empty && ParamEmail.mSmtp != string.Empty && ParamEmail.mSmtpPassword != string.Empty && ParamEmail.mPort > 0 && msgmail.Trim()!=string.Empty)
                 {
                     //Si on a pas de mail renseigné,on n'envoie pas de mail
 
                     MailMessage mail = new MailMessage
                     {
                         From = new MailAddress(ParamEmail.mEmail),
-                        Subject = "Notification Envoi Email REFUS",
+                        Subject = "Notification sur les Envoi Mail Automatique",
                         Body = msgmail,
                         IsBodyHtml = true
 
                     };
 
                     //Destinataire
-                    mail.To.Add("franck.boah@aitek.fr");
+                   // mail.To.Add("franck.boah@aitek.fr");
+                   mail.To.Add("aurelia.banchi@aitek.fr");
 
 
                     var smtpClient = new SmtpClient
