@@ -656,7 +656,7 @@ namespace SRVMAIL6V.DAO
                      "<p>Vous avez participé aux sessions d’évaluation d’AITEK le " + LCINF.mDateCreationCV.ToShortDateString() + " et nous vous remercions de l’intérêt porté à notre structure.  </p>" +
                      "<p>Votre candidature a bien été prise en compte et est en cours de traitement. Si elle correspond aux exigences du poste à pourvoir, nous vous recontacterons dans un délai de 3 semaines pour la suite du process.</p>" +
                      "<p>                                                                                                </p>" +
-                     "<p>Faute de réponse de notre part passé ce délai, vous voudrez bien considérer que votre candidature au poste sollicité n’aura pas été retenue </p>" +
+                     "<p>Faute de réponse de notre part passé ce délai, vous voudrez bien considérer que votre candidature au poste sollicité n’aura pas été retenue. </p>" +
                      "<p>Vos résultats seront néanmoins conservés dans notre base de données et nous ne manquerons pas de vous recontacter en cas d’opportunité pouvant vous correspondre.  </p>" +
                      "<p>                                                                                                </p>" +
                      "<p>Dans l’attente votre profil MBTI est  " + GetStatutMBTI(LCINF.mNoteTESTMBTI) + " dont vous trouverez un descriptif en cliquant sur le lien suivant : https://www.16personalities.com/fr/la-personnalite-" + LCINF.mNoteTESTMBTI + ".  </p>" +
@@ -695,7 +695,7 @@ namespace SRVMAIL6V.DAO
                                    "<p>Vous avez participé aux sessions d’évaluation d’AITEK le " + LCINF.mDateCreationCV.ToShortDateString() + " et nous vous remercions de l’intérêt porté à notre structure.  </p>" +
                                    "<p>Votre candidature a bien été prise en compte et est en cours de traitement. Si elle correspond aux exigences du poste à pourvoir, nous vous recontacterons dans un délai de 3 semaines pour la suite du process.</p>" +
                                    "<p>                                                                                                </p>" +
-                                   "<p>Faute de réponse de notre part passé ce délai, vous voudrez bien considérer que votre candidature au poste sollicité n’aura pas été retenue </p>" +
+                                   "<p>Faute de réponse de notre part passé ce délai, vous voudrez bien considérer que votre candidature au poste sollicité n’aura pas été retenue. </p>" +
                                    "<p>Vos résultats seront néanmoins conservés dans notre base de données et nous ne manquerons pas de vous recontacter en cas d’opportunité pouvant vous correspondre.  </p>" +
                                    "<p>                                                                                                </p>" +
                                    "<p>Dans l’attente votre profil MBTI est  " + GetStatutMBTI(LCINF.mNoteTESTMBTI) + " dont vous trouverez un descriptif en cliquant sur le lien suivant : https://www.16personalities.com/fr/la-personnalite-" + LCINF.mNoteTESTMBTI + ".  </p>" +
@@ -743,7 +743,7 @@ namespace SRVMAIL6V.DAO
                      "<p>Vous avez participé aux sessions d’évaluation d’AITEK le " + LCINF.mDateCreationCV.ToShortDateString() + " et nous vous remercions de l’intérêt porté à notre structure.  </p>" +
                      "<p>Votre candidature a bien été prise en compte et est en cours de traitement. Si elle correspond aux exigences du poste à pourvoir, nous vous recontacterons dans un délai de 3 semaines pour la suite du process.</p>" +
                      "<p>                                                                                                </p>" +
-                     "<p>Faute de réponse de notre part passé ce délai, vous voudrez bien considérer que votre candidature au poste sollicité n’aura pas été retenue </p>" +
+                     "<p>Faute de réponse de notre part passé ce délai, vous voudrez bien considérer que votre candidature au poste sollicité n’aura pas été retenue. </p>" +
                      "<p>Vos résultats seront néanmoins conservés dans notre base de données et nous ne manquerons pas de vous recontacter en cas d’opportunité pouvant vous correspondre.  </p>" +
                      "<p>                                                                                                </p>" +
                      "<p>Cordialement,</p>" +
@@ -781,7 +781,7 @@ namespace SRVMAIL6V.DAO
                        "<p>Vous avez participé aux sessions d’évaluation d’AITEK le " + LCINF.mDateCreationCV.ToShortDateString() + " et nous vous remercions de l’intérêt porté à notre structure.  </p>" +
                        "<p>Votre candidature a bien été prise en compte et est en cours de traitement. Si elle correspond aux exigences du poste à pourvoir, nous vous recontacterons dans un délai de 3 semaines pour la suite du process.</p>" +
                        "<p>                                                                                                </p>" +
-                       "<p>Faute de réponse de notre part passé ce délai, vous voudrez bien considérer que votre candidature au poste sollicité n’aura pas été retenue </p>" +
+                       "<p>Faute de réponse de notre part passé ce délai, vous voudrez bien considérer que votre candidature au poste sollicité n’aura pas été retenue. </p>" +
                        "<p>Vos résultats seront néanmoins conservés dans notre base de données et nous ne manquerons pas de vous recontacter en cas d’opportunité pouvant vous correspondre.  </p>" +
                        "<p>                                                                                                </p>" +
                        "<p>Cordialement</p>";
